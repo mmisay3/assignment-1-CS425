@@ -46,14 +46,47 @@
                 <td><!--TODO: zoom slider--></td>
             </tr>
             <tr>
-                <td>Projection</td>
-                <td><!--TODO: dropdown menu element--></td>
+                <td>Projection
+                    <select id="view-option">
+                        <option value="">Perspective</option>
+                        <option value="">Orthographic</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td>Layers</td>
-                <td><!--TODO: input element--></td>
+                <td>Layers
+                    <input type="file" 
+                        accept="application/JSON">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    X: <span id="x-value"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Y: <span id="y-value"></span>
+                </td>
             </tr>
         </table>
     </div>
+
+    <script type="text/javascript">
+        screen_width_x = window.innerWidth;
+        screen_height_y = window.innerHeight;
+
+        window.addEventListener('mousemove', function(e){
+            // console.log(`x: ${e.x} | x: ${e.y} `);
+            var mouseCoord_x = e.x;
+            var constrained_mouseCoord_x = (e.pageX/screen_width_x)*360;
+
+            var mouseCoord_x = e.y;
+            var constrained_mouseCoord_y = (e.pageX/screen_height_y)*100;
+
+            document.getElementById('x-value').textContent = constrained_mouseCoord_x;
+            document.getElementById('y-value').textContent = constrained_mouseCoord_y;
+        });
+    </script>
 </body>
 </html>

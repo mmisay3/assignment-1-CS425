@@ -13,5 +13,8 @@ out vec4 vColor;
 void main() {
     // TODO: set color as the dot product between a light direction, and the vertex normal
     // TODO: transform position
+
+    vec3 lightdir = normalize(vec3(1,0,1));
+    float dotp = max(0.25,dot(lightdir,normal));
 }
 `;
